@@ -81,13 +81,19 @@
             font-size: 30px;
             color: #d32f2f;
         }
+
+        .form-container .prediction {
+            margin-top: 15px;
+            font-size: 18px;
+            color: #d32f2f;
+        }
     </style>
 </head>
 <body>
     <div id="heart-container"></div>
     <div class="form-container">
         <div class="heart-title">❤️ Heart Health ❤️</div>
-        <form action="/predict" method="post">
+        <form id="predictForm">
             <label for="feature1">Age:</label>
             <select id="feature1" name="feature1" required>
                 <option value="">Select Age</option>
@@ -122,8 +128,38 @@
             </select>
             <button type="submit">Predict</button>
         </form>
+        <h2 class="prediction">Prediction: <span id="result"></span></h2>
     </div>
+
     <script>
+        document.getElementById('predictForm').onsubmit = function(event) {
+            event.preventDefault();
+            const feature1 = document.getElementById('feature1').value;
+            const feature2 = document.getElementById('feature2').value;
+            const feature3 = document.getElementById('feature3').value;
+            const feature4 = document.getElementById('feature4').value;
+
+            fetch('/predict', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ 
+                    feature1: parseFloat(feature1), 
+                    feature2: parseFloat(feature2),
+                    feature3: parseFloat(feature3),
+                    feature4: parseFloat(feature4) 
+                }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('result').textContent = data.prediction;
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+        }
+
         // Basic setup
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
