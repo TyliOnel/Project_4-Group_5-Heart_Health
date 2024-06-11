@@ -34,13 +34,15 @@ Our goal is to create an interactive website that healthcare professionals can u
 ### Target Variable
 The target variable we aim to predict is CHDRisk (Coronary Heart Disease Risk).
 
+
+
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
 ### Prerequisites
 
-Install the following softwares with versions of or higher than
+Install the following softwares with versions equal to or higher than
 
 ```
 Python 3.x
