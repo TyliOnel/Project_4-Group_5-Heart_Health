@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Health Analysis</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #ff5f6d, #ffc371);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+            color: #006064; /* Dark cyan text color */
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        #heart-container {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .form-container {
+            position: absolute;
+            top: 60%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 300px;
+        }
+
+        .form-container h1 {
+            margin-top: 0;
+            font-size: 24px;
+            color: #d32f2f; /* Red color for heart health title */
+        }
+
+        .form-container label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+
+        .form-container input, .form-container select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #b0bec5;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .form-container button {
+            padding: 10px 20px;
+            background-color: #d32f2f;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .form-container button:hover {
+            background-color: #b71c1c;
+        }
+
+        .form-container .heart-title {
+            font-size: 30px;
+            color: #d32f2f;
+        }
+
+        .form-container .prediction {
+            margin-top: 15px;
+            font-size: 18px;
+            color: #d32f2f;
+        }
+    </style>
+</head>
+<body>
+    <div id="heart-container"></div>
+    <div class="form-container">
+        <div class="heart-title">❤️ Heart Health ❤️</div>
+        <form id="predictForm">
+            <label for="feature1">Age:</label>
+            <select id="feature1" name="feature1" required>
+                <option value="">Select Age</option>
+                <option value="20">20</option>
+                <option value="30">30</option>
+                <option value="40">40</option>
+                <option value="50">50</option>
+                <option value="60">60</option>
+            </select>
+            <label for="feature2">Cholesterol Level:</label>
+            <select id="feature2" name="feature2" required>
+                <option value="">Select Cholesterol Level</option>
+                <option value="200">200</option>
+                <option value="250">250</option>
+                <option value="300">300</option>
+                <option value="350">350</option>
+            </select>
+            <label for="feature3">Blood Pressure:</label>
+            <select id="feature3" name="feature3" required>
+                <option value="">Select Blood Pressure</option>
+                <option value="120">120</option>
+                <option value="140">140</option>
+                <option value="160">160</option>
+                <option value="180">180</option>
+            </select>
+            <label for="feature4">Exercise Level:</label>
+            <select id="feature4" name="feature4" required>
+                <option value="">Select Exercise Level</option>
+                <option value="1">Low</option>
+                <option value="2">Moderate</option>
+                <option value="3">High</option>
+            </select>
+            <button type="submit">Predict</button>
+        </form>
+        <h2 class="prediction">Prediction: <span id="result"></span></h2>
+    </div>
+
+    <script>
+        document.getElementById('predictForm').onsubmit = function(event) {
+            event.preventDefault();
+            const feature1 = document.getElementById('feature1').value;
+            const feature2 = document.getElementById('feature2').value;
+            const feature3 = document.getElementById('feature3').value;
+            const feature4 = document.getElementById('feature4').value;
+
+            fetch('/predict', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ 
+                    feature1: parseFloat(feature1), 
+                    feature2: parseFloat(feature2),
+                    feature3: parseFloat(feature3),
+                    feature4: parseFloat(feature4) 
+                }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('result').textContent = data.prediction;
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+        }
+
+        // Basic setup
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.getElementById('heart-container').appendChild(renderer.domElement);
+
+        // Load the heart model
+        const loader = new THREE.ObjectLoader();
+        loader.load('/static/3d_models/heart.jpg', function (obj) {
+
+
+            scene.add(obj);
+            obj.position.set(0, 0, 0);
+            obj.rotation.set(0, 0, 0);
+            obj.scale.set(0.5, 0.5, 0.5);
+        });
+
+        // Lighting
+        const light = new THREE.PointLight(0xffffff, 1, 100);
+        light.position.set(10, 10, 10);
+        scene.add(light);
+
+        // Camera position
+        camera.position.z = 5;
+
+        // Animation loop
+        function animate() {
+            requestAnimationFrame(animate);
+            renderer.render(scene, camera);
+        }
+        animate();
+    </script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Health</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: #ffffff;
+            font-family: Arial, sans-serif;
+            color: #000000;
+        }
+        .background-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('static/images/heart.jpg') no-repeat center center fixed;
+            background-size: contain; /* Ensures the image scales correctly without overlapping */
+            z-index: -1; /* Places the background image behind other elements */
+            animation: rotateBackground 60s linear infinite; /* Animation for rotation */
+        }
+        @keyframes rotateBackground {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+        .title-container {
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background to improve readability */
+            padding: 20px;
+            border-radius: 10px;
+            z-index: 1;
+        }
+        .title-container .title {
+            font-size: 6em;
+            font-weight: bold;
+            margin: 0;
+        }
+        .bottom-text {
+            position: absolute;
+            bottom: 20px;
+            font-size: 1.5em;
+            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background to improve readability */
+            padding: 10px;
+            border-radius: 10px;
+            z-index: 1;
+        }
+        .button-container {
+            margin-top: 20px;
+            z-index: 1;
+        }
+        .button-container a {
+            padding: 15px 30px;
+            background-color: #d32f2f;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 1.2em;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .button-container a:hover {
+            background-color: #b71c1c;
+        }
+    </style>
+</head>
+<body>
+    <div class="background-image"></div>
+    <div class="title-container">
+        <div class="title">Heart Health</div>
+    </div>
+    <div class="button-container">
+        <a href="index.html">Go to Analysis</a>
+    </div>
+    <div class="bottom-text">Project 4 - Group 5</div>
+</body>
+</html>
