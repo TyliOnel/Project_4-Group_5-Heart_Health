@@ -1,18 +1,21 @@
 # Coronary Heart Disease Risk Prediction
 
-[![Python 3.x](https://img.shields.io/badge/python-3.x-blue.svg)](https://www.python.org/)
+[![Python 3.x](https://img.shields.io/badge/python-3.x-red.svg)](https://www.python.org/)
 [![Pandas 2.1.4](https://img.shields.io/badge/pandas-2.1.4-blue.svg)](https://pandas.pydata.org/)
-[![Matplotlib 3.8.0](https://img.shields.io/badge/matplotlib-3.8.0-blue.svg)](https://matplotlib.org/)
-[![Scikit-learn 1.2.2](https://img.shields.io/badge/scikit--learn-1.2.2-blue.svg)](https://scikit-learn.org/)
-[![SQLAlchemy 2.0.21](https://img.shields.io/badge/sqlalchemy-2.0.21-blue.svg)](https://www.sqlalchemy.org/)
-[![Plotly 5.9.0](https://img.shields.io/badge/plotly-5.9.0-blue.svg)](https://plotly.com/)
-[![Jupyter Notebook 1.0.0](https://img.shields.io/badge/jupyter--notebook-1.0.0-blue.svg)](https://jupyter.org/)
-[![Seaborn 0.12.2](https://img.shields.io/badge/seaborn-0.12.2-blue.svg)](https://seaborn.pydata.org/)
-[![Numpy 1.26.3](https://img.shields.io/badge/numpy-1.26.3-blue.svg)](https://numpy.org/)
-[![TensorFlow 2.16.1](https://img.shields.io/badge/tensorflow-2.16.1-blue.svg)](https://www.tensorflow.org/)
-[![Keras 3.3.3](https://img.shields.io/badge/keras-3.3.3-blue.svg)](https://keras.io/)
-[![Flask 2.2.5](https://img.shields.io/badge/flask-2.2.5-blue.svg)](https://flask.palletsprojects.com/)
-[![SciPy 1.11.4](https://img.shields.io/badge/scipy-1.11.4-blue.svg)](https://www.scipy.org/)
+[![Matplotlib 3.8.0](https://img.shields.io/badge/matplotlib-3.8.0-83AB57.svg)](https://matplotlib.org/)
+[![Scikit-learn 1.2.2](https://img.shields.io/badge/scikit--learn-1.2.2-pink.svg)](https://scikit-learn.org/)
+[![SQLAlchemy 2.0.21](https://img.shields.io/badge/sqlalchemy-2.0.21-purple.svg)](https://www.sqlalchemy.org/)
+[![Plotly 5.9.0](https://img.shields.io/badge/plotly-5.9.0-yellow.svg)](https://plotly.com/)
+[![Jupyter Notebook 1.0.0](https://img.shields.io/badge/jupyter--notebook-1.0.0-teal.svg)](https://jupyter.org/)
+[![Seaborn 0.12.2](https://img.shields.io/badge/seaborn-0.12.2-orange.svg)](https://seaborn.pydata.org/)
+[![Numpy 1.26.3](https://img.shields.io/badge/numpy-1.26.3-skyblue.svg)](https://numpy.org/)
+[![TensorFlow 2.16.1](https://img.shields.io/badge/tensorflow-2.16.1-gold.svg)](https://www.tensorflow.org/)
+[![Keras 3.3.3](https://img.shields.io/badge/keras-3.3.3-B95FAB.svg)](https://keras.io/)
+[![Flask 2.2.5](https://img.shields.io/badge/flask-2.2.5-7CC198.svg)](https://flask.palletsprojects.com/)
+[![SciPy 1.11.4](https://img.shields.io/badge/scipy-1.11.4-E48A36.svg)](https://www.scipy.org/)
+[![imblearn 0.11.0](https://img.shields.io/badge/imblearn-0.11.0-brightgreen)](https://pypi.org/project/imbalanced-learn/0.11.0/)
+[![statsmodels 0.14.0](https://img.shields.io/badge/statsmodels-0.14.0-brown)](https://pypi.org/project/statsmodels/0.14.0/)
+[![joblib 1.2.0](https://img.shields.io/badge/joblib-1.2.0-grey)](https://pypi.org/project/joblib/1.2.0/)
 
 
 ## Project Overview
@@ -57,7 +60,10 @@ Numpy 1.26.3
 Tensorflow 2.16.1
 Keras 3.3.3 
 Flask 2.2.5
-Scipy 1.11.4 
+Scipy 1.11.4
+imblearn 0.11.0
+statsmodels  0.14.0
+joblib 1.2.0
 ```
 
 ### Installing
@@ -134,10 +140,30 @@ Here are the installation instructions for the specified libraries and tools:
       ```
 
 13. **SciPy 1.11.4**
-    - Install SciPy using pip: 
+    - Install SciPy using pip:
       ```
       pip install scipy==1.11.4
       ```
+
+14. **imblearn 0.11.0**
+    - Install imbalanced-learn using pip:
+      ```
+      pip install imbalanced-learn==0.11.0
+      ```
+
+15. **statsmodels 0.14.0**
+    - Install statsmodels using pip:
+      ```
+      pip install statsmodels==0.14.0
+      ```
+
+16. **joblib 1.2.0**
+    - Install joblib using pip:
+      ```
+      pip install joblib==1.2.0
+      ``` 
+
+These installation rules provide clear instructions on how to install each package using pip with the specified version.
 
 These commands can be executed in your command line interface or terminal to install the respective libraries and tools. Make sure to replace `==` with `>=` if you are open to installing later versions.
 
@@ -198,7 +224,3 @@ Here are the links for the specified libraries and tools:
 ## License
 
 This project is licensed under the © 2024 edX Boot Camps LLC License, created for the University of Toronto Continuing Studies Data Analytics Bootcamp.
-
-## Acknowledgments
-
-????
