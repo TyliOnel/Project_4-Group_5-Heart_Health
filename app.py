@@ -18,12 +18,20 @@ def index():
 def predict():
     # Get the JSON data from the request
     data = request.get_json(force=True)
+    print(data)
     # Extract features from the data
     features = [data['feature1'], data['feature2'], data['feature3'], data['feature4']]
     # Predict using the model
     prediction = model.predict([features])
     # Return the prediction as a JSON response
-    return jsonify({'prediction': int(prediction[0])})
+    if int(prediction[0]) == 1:
+        return jsonify({'prediction': "At risk"})
+    
+    if int(prediction[0]) == 0:
+        return jsonify({'prediction': "No risk"})
+
+    else: 
+        return jsonify({'prediction': "Unknown"})
 
 if __name__ == '__main__':
     app.run(debug=True)

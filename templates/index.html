@@ -97,36 +97,45 @@
             <label for="feature1">Age:</label>
             <select id="feature1" name="feature1" required>
                 <option value="">Select Age</option>
-                <option value="20">20</option>
-                <option value="30">30</option>
-                <option value="40">40</option>
-                <option value="50">50</option>
-                <option value="60">60</option>
+                <script>
+                    // Loop to generate options from 32 to 70
+                    for (let i = 32; i <= 70; i++) {
+                        document.write('<option value="' + i + '">' + i + '</option>');
+                    }
+                </script>
             </select>
-            <label for="feature2">Cholesterol Level:</label>
+            <label for="feature2">totChol:</label>
             <select id="feature2" name="feature2" required>
-                <option value="">Select Cholesterol Level</option>
-                <option value="200">200</option>
-                <option value="250">250</option>
-                <option value="300">300</option>
-                <option value="350">350</option>
+                <option value="">Select Cholestrol</option>
+                <script>
+                    // Loop to generate options from 113 to 600
+                    for (let i = 113; i <= 600; i++) {
+                        document.write('<option value="' + i + '">' + i + '</option>');
+                    }
+                </script>
             </select>
-            <label for="feature3">Blood Pressure:</label>
+            <label for="feature3">BMI:</label>
             <select id="feature3" name="feature3" required>
-                <option value="">Select Blood Pressure</option>
-                <option value="120">120</option>
-                <option value="140">140</option>
-                <option value="160">160</option>
-                <option value="180">180</option>
+                <option value="">Select BMI</option>
+                <script>
+                    // Loop to generate decimal values between 15.54 and 56.8
+                    for (let i = 1554; i <= 5680; i++) {
+                        let value = (i / 100).toFixed(2); // Convert to decimal with two decimal places
+                        document.write('<option value="' + value + '">' + value + '</option>');
+                    }
+                </script>
             </select>
-            <label for="feature4">Exercise Level:</label>
+            <label for="feature4">Select heartRate:</label>
             <select id="feature4" name="feature4" required>
-                <option value="">Select Exercise Level</option>
-                <option value="1">Low</option>
-                <option value="2">Moderate</option>
-                <option value="3">High</option>
-            </select>
-            <button type="submit">Predict</button>
+                <option value="">heartRate</option>
+                <script>
+                    // Loop to generate options from 44 to 143
+                    for (let i = 44; i <= 143; i++) {
+                        document.write('<option value="' + i + '">' + i + '</option>');
+                    }
+                </script>
+                </select>
+                <button type="submit">Predict</button>
         </form>
         <h2 class="prediction">Prediction: <span id="result"></span></h2>
     </div>
@@ -137,7 +146,7 @@
             const feature1 = document.getElementById('feature1').value;
             const feature2 = document.getElementById('feature2').value;
             const feature3 = document.getElementById('feature3').value;
-            const feature4 = document.getElementById('feature4').value;
+            const feature4 = document.getElementById('feature4').value
 
             fetch('/predict', {
                 method: 'POST',
@@ -148,7 +157,7 @@
                     feature1: parseFloat(feature1), 
                     feature2: parseFloat(feature2),
                     feature3: parseFloat(feature3),
-                    feature4: parseFloat(feature4) 
+                    feature4: parseFloat(feature4)
                 }),
             })
             .then(response => response.json())
