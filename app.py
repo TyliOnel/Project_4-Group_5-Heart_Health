@@ -14,6 +14,17 @@ def landing():
 def index():
     return render_template('index.html')
 
+@app.route('/model.html')
+def test():
+    return (
+        f"This is the model<br/>"
+        f"Model: {type(model).__name__}<br/>"
+        f"number: {len(model.estimators_)}<br/>"
+        f"features: {model.n_features_in_}<br/>"
+        f"classes: {model.classes_}<br/>"
+        f"parameters: {model.get_params()}<br/>"
+    )
+
 @app.route('/predict', methods=['POST'])
 def predict():
     # Get the JSON data from the request
@@ -32,6 +43,8 @@ def predict():
 
     else: 
         return jsonify({'prediction': "Unknown"})
+    
+
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Model Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        .details {
+            margin-top: 20px;
+        }
+        .detail {
+            margin-bottom: 10px;
+        }
+        pre {
+            background-color: #f8f8f8;
+            border: 1px solid #ddd;
+            padding: 10px;
+            overflow: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Model Details</h1>
+    <div class="details">
+        <div class="detail">Model: {{ model_details.model }}</div>
+        <div class="detail">Number of Estimators: {{ model_details.number }}</div>
+        <div class="detail">Number of Features: {{ model_details.features }}</div>
+        <div class="detail">Classes: {{ model_details.classes }}</div>
+        <div class="detail">Parameters:</div>
+        <pre>{{ model_details.parameters }}</pre>
+    </div>
+</body>
+</html>
