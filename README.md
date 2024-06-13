@@ -168,24 +168,6 @@ These installation rules provide clear instructions on how to install each packa
 These commands can be executed in your command line interface or terminal to install the respective libraries and tools. Make sure to replace `==` with `>=` if you are open to installing later versions.
 
 
-# HELP!!!
-
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end-to-end tests
-
-Explain what these tests test and why
-
-
-### And coding style tests
-
-Explain what these tests test and why
-
-# HELP!!!
-
 ### Deployment of Heart Health Model
 
 **Objective**: Deployed a machine learning application to predict heart health using a Random Forest classification model, integrating Python, CSS, JSON, Flask, and HTML.
