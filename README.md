@@ -38,7 +38,6 @@ Our goal is to create an interactive website that healthcare professionals can u
 The target variable we aim to predict is CHDRisk (Coronary Heart Disease Risk).
 
 
-
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
@@ -166,6 +165,63 @@ Here are the installation instructions for the specified libraries and tools:
 These installation rules provide clear instructions on how to install each package using pip with the specified version.
 
 These commands can be executed in your command line interface or terminal to install the respective libraries and tools. Make sure to replace `==` with `>=` if you are open to installing later versions.
+
+## Overview
+This project aims to predict the risk of Coronary Heart Disease (CHD) using machine learning models. The dataset includes various features such as age, cholesterol level, blood pressure, and exercise level. The primary goal is to develop a reliable model that can accurately identify individuals at risk of developing CHD.
+
+## Project Steps
+
+### 1. Data Preparation and Cleaning
+- **Loading Dataset**: The dataset was loaded from a CSV file.
+- **Mapping Binary Columns**: Binary columns (e.g., 'yes/no', 'female/male') were mapped to numeric values.
+- **Handling Missing Values**: Rows with missing values were dropped.
+- **Class Imbalance**: The proportion of classes within the target variable was explored, revealing a notable class imbalance.
+
+### 2. Exploratory Data Analysis (EDA)
+- **Class Distribution**: The distribution of the target variable (CHDRisk) was visualized using a pie chart.
+- **Normality Test**: The Shapiro-Wilk test indicated that the target variable is not normally distributed.
+- **Autocorrelation Analysis**: The target variable was checked for autocorrelation and was found to be identically distributed.
+
+### 3. Feature Analysis
+- **Discrete Feature Distribution**: The frequency of discrete features by target variable class was explored.
+- **Continuous Feature Distribution**: The distributions of continuous variables for both majority and minority classes in the target variable were analyzed.
+- **Correlation Matrix**: A heatmap was created to visualize the correlation between features.
+- **Multicollinearity Detection**: Variance Inflation Factor (VIF) was calculated to detect multicollinearity among features.
+
+### 4. Feature Engineering
+- **Mean Arterial Blood Pressure (MAP)**: Systolic and diastolic blood pressure were combined into a single indicator (MAP) to reduce multicollinearity.
+
+### 5. Model Development and Evaluation
+- **Baseline Models**: Logistic regression, neural network, and random forest models were developed and evaluated.
+  - **Random Forest Model**: Achieved the highest accuracy but had a low recall score for the minority class.
+  - **Logistic Regression Model**: Showed the best recall score for the minority class but had lower overall accuracy.
+  - **Neural Network Model**: Demonstrated moderate performance with an accuracy of 0.71 and a recall of 0.36.
+
+### 6. Model Optimization
+- **Dropping Features**: Based on low PCA loadings, high correlation, and low feature importance.
+- **Feature Engineering**: Combining blood pressure measurements into MAP.
+- **Results**: The optimized random forest model (dropping features of low importance) exhibited the best performance with high accuracy and consistency across k-fold validation.
+
+### 7. Model Deployment
+A Flask web application was developed to allow users to input features and get predictions from the trained random forest model.
+
+## Results
+
+- **Best Model**: Random Forest with optimized features.
+  - **Accuracy**: 0.82
+  - **Recall**: 0.26
+  - **Cross-Validation**: Consistent accuracy and recall across k-fold validation, indicating the model is not overfit.
+
+## Conclusion
+While the optimized random forest model achieved high accuracy, the recall scores for the minority class (those at risk of developing CHD) were consistently low, highlighting a significant issue of high false negatives. This underscores the need for more data collection, especially for the at-risk population, to improve the model's ability to correctly identify individuals at risk of developing CHD.
+
+## Flask App Usage
+The Flask app allows users to predict the risk of CHD by inputting features such as age, cholesterol level, blood pressure, and exercise level. The app uses the trained random forest model to provide predictions.
+
+## Future Work
+- **Data Collection**: Gathering more data, especially for the minority class, to improve recall scores.
+- **Model Improvements**: Exploring advanced techniques to enhance model performance, particularly for recall of the minority class.
+
 
 
 ### Deployment of Heart Health Model
